@@ -2,7 +2,7 @@
 
 **NETWORK AND CERTIFICATE SYSTEM SECURITY REQUIREMENTS** 
 
-**Version 1.2 - Effective 15 September 2018**
+**Version 1.3 - Effective 15 June 2019**
 
 \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
 
@@ -17,7 +17,7 @@ a.	Segment Certificate Systems into networks based on their functional or logica
 
 b.	Apply equivalent security controls to all systems co-located in the same network with a Certificate System;
 
-c.	Maintain Root CA Systems in a High Security Zone and in an offline state or air-gapped from all other networks;
+c.	Maintain Root CA Systems in a High Security Zone and in an offline state or air-gapped from all other networks. Offline Root CA systems shall be a non-networked, stand-alone system that is powered down when not in use; 
 
 d.	Maintain and protect Issuing Systems, Certificate Management Systems, and Security Support Systems in at least a Secure Zone;
 
@@ -25,13 +25,13 @@ e.	Implement and configure Security Support Systems that protect systems and com
 
 f.	Configure each network boundary control (firewall, switch, router, gateway, or other network control device or system) with rules that support only the services, protocols, ports, and communications that the CA has identified as necessary to its operations;
 
-g.	Configure Issuing Systems, Certificate Management Systems, Security Support Systems, and Front-End / Internal-Support Systems by removing or disabling all accounts, applications, services, protocols, and ports that are not used in the CA’s or Delegated Third Party’s operations and allowing only those that are approved by the CA or Delegated Third Party;
+g.	Configure all systems used during a certificate life-cycle event by removing or disabling all accounts, applications, services, protocols, and ports that are not used in the CA’s or Delegated Third Party’s operations and allowing only those that are approved by the CA or Delegated Third Party;
 
-h.	Review configurations of Issuing Systems, Certificate Management Systems, Security Support Systems, and Front-End / Internal-Support Systems on at least a weekly basis to determine whether any changes violated the CA’s security policies;
+h.	Review configurations of Issuing Systems, Certificate Management Systems, Security Support Systems, and Front-End / Internal-Support Systems on at least a weekly basis to determine whether any changes violated the CA’s security policies. For offline Root CA systems, review configurations every 30 days or when the system is powered-on;
 
 i.	Grant administration access to Certificate Systems only to persons acting in Trusted Roles and require their accountability for the Certificate System’s security;
 
-j.	Implement Multi-Factor Authentication to each component of the Certificate System that supports Multi-Factor Authentication;
+j.	Implement Multi-Factor Authentication to each component of the Certificate System that supports Multi-Factor Authentication. For offline Root CA systems, Multi-Factor Authentication should be implemented and based on compensating access controls;
 
 k.	Change authentication keys and passwords for any privileged account or service account on a Certificate System whenever a person’s authorization to administratively access that account on the Certificate System is changed or revoked; and
 
@@ -90,9 +90,9 @@ Certification Authorities and Delegated Third Parties SHALL:
 
 a.	Implement a Security Support System under the control of CA or Delegated Third Party Trusted Roles that monitors, detects, and reports any security-related configuration change to Certificate Systems;
 
-b.	Identify those Certificate Systems under the control of CA or Delegated Third Party Trusted Roles capable of monitoring and logging system activity and enable those systems to continuously monitor and log system activity;
+b.	Identify those Certificate Systems under the control of CA or Delegated Third Party Trusted Roles capable of monitoring and logging system activity and enable those systems to continuously monitor and log system activity while the system is powered-on;
 
-c.	Implement automated mechanisms under the control of CA or Delegated Third Party Trusted Roles to process logged system activity and alert personnel, using notices provided to multiple destinations, of possible Critical Security Events; 
+c.	Except for offline Root CA systesms, implement automated mechanisms under the control of CA or Delegated Third Party Trusted Roles to process logged system activity and alert personnel, using notices provided to multiple destinations, of possible Critical Security Events; 
 
 d.	Require Trusted Role personnel to follow up on alerts of possible Critical Security Events;
 
@@ -104,13 +104,13 @@ f.	Maintain, archive, and retain logs in accordance with disclosed business prac
 
 Certification Authorities and Delegated Third Parties SHALL:
 
-a.	Implement intrusion detection and prevention controls under the control of CA or Delegated Third Party Trusted Roles to protect Certificate Systems against common network and system threats;
+a.	Except for offline Root CA systems, implement intrusion detection and prevention controls under the control of CA or Delegated Third Party Trusted Roles to protect Certificate Systems against common network and system threats;
 
 b.	Document and follow a vulnerability correction process that addresses the identification, review, response, and remediation of vulnerabilities; 
 
-c.	Undergo or perform a Vulnerability Scan (i) within one (1) week of receiving a request from the CA/Browser Forum, (ii) after any system or network changes that the CA determines are significant, and (iii) at least every three (3) months, on public and private IP addresses identified by the CA or Delegated Third Party as the CA’s or Delegated Third Party’s Certificate Systems;
+c.	Undergo or perform a Vulnerability Scan (i) within one (1) after any system or network changes that the CA determines are significant, and (ii) at least every three (3) months, on public and private IP addresses identified by the CA or Delegated Third Party as the CA’s or Delegated Third Party’s Certificate Systems;
 
-d.	Undergo a Penetration Test on the CA’s and each Delegated Third Party’s Certificate Systems on at least an annual basis and after infrastructure or application upgrades or modifications that the CA determines are significant;
+d.	Undergo a Penetration Test on all non-offline Root CA’s and each Delegated Third Party’s Certificate Systems on at least an annual basis and after infrastructure or application upgrades or modifications that the CA determines are significant;
 
 e.	Record evidence that each Vulnerability Scan and Penetration Test was performed by a person or entity (or collective group thereof) with the skills, tools, proficiency, code of ethics, and independence necessary to provide a reliable Vulnerability Scan or Penetration Test; and
 f.	Do one of the following within ninety-six (96) hours of discovery of a Critical Vulnerability not previously addressed by the CA’s vulnerability correction process:
@@ -144,7 +144,9 @@ f.	Do one of the following within ninety-six (96) hours of discovery of a Critic
 
 **Multi-Factor Authentication:** An authentication mechanism consisting of two or more of the following independent categories of credentials (i.e. factors) to verify the user’s identity for a login or other transaction: something you know (knowledge factor), something you have (possession factor), and something you are (inherence factor). Each factor must be independent. Certificate-based authentication can be used as part of Multifactor Authentication only if the private key is stored in a Secure Key Storage Device.
 
-**National Vulnerability Database (NVD):**   A database that includes the Common Vulnerability Scoring System (CVSS) scores of security-related software flaws, misconfigurations, and vulnerabilities associated with systems (see http://nvd.nist.gov/home.cfm). 
+**National Vulnerability Database (NVD):**   A database that includes the Common Vulnerability Scoring System (CVSS) scores of security-related software flaws, misconfigurations, and vulnerabilities associated with systems (see http://nvd.nist.gov/home.cfm).
+
+**Offline Root CA System:** A Root CA System that is operated in a non-networked, stand-alone state and powered down when not in use.
 
 **OWASP Top Ten:**  A list of application vulnerabilities published by the Open Web Application Security Project (see https://www.owasp.org/index.php/Category:OWASP_Top_Ten_Project).
 
